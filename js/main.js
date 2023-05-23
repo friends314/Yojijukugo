@@ -1,6 +1,7 @@
 'use strict';
 
 const submit = document.querySelector("#submit");
+const reveal = document.querySelector("#reveal");
 
 /**
  * 辞書から１つランダムに取得
@@ -21,5 +22,11 @@ if (submit) {
         if (answer === obj.kana) {
             alert('正解！');
         }
+    })
+}
+
+if (reveal) {
+    reveal.addEventListener('click', () => {
+        alert(obj.kana);
     })
 }
