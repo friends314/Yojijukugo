@@ -5,11 +5,24 @@ const reveal = document.querySelector("#reveal");
 
 /**
  * 辞書から１つランダムに取得
+ * 一度出題された四字熟語は除外し、取得し直す。
  * @meth Math.floor(Math.random() * (max - min) + min);
  */
+const tmp = []; // 除外用配列
 const getQuestion = (d = dictionary) => {
-    const key = Math.floor(Math.random() * (d.length));
+    if (tmp.length == d.length) {
+        alert("お疲れ様でした");
+        reveal.remove();  // 完了画面の作成を検討
+        return false;
+    }
 
+    let key;
+    do {
+        key = Math.floor(Math.random() * d.length);
+    } while (tmp.includes(key));
+
+    tmp.push(key);
+    console.log(tmp);
     return d[key];
 }
 let question = getQuestion();
@@ -34,8 +47,10 @@ const submitAnswer = () => {
         if (answer === question.kana) {
             alert('正解！');
             question = getQuestion();
-            displayQuiz(question);
-            submitAnswer();
+            if (question != false){
+                displayQuiz(question);
+                submitAnswer();
+            }
         }
     })
 }
