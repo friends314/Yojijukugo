@@ -7,26 +7,40 @@ const reveal = document.querySelector("#reveal");
  * 辞書から１つランダムに取得
  * @meth Math.floor(Math.random() * (max - min) + min);
  */
-const key = Math.floor(Math.random() * (dictionary.length));
-const obj = dictionary[key];
+const getQuestion = (d = dictionary) => {
+    const key = Math.floor(Math.random() * (d.length));
 
-// HTML初期表示
-document.querySelector("#jukugo").textContent = obj.jukugo;
-document.querySelector("#meaning").textContent = obj.meaning;
+    return d[key];
+}
+let question = getQuestion();
 
+/**
+ * 問題を表示
+ */
+const displayQuiz = question => {
+    // console.log(question);
+    document.querySelector("#jukugo").textContent = question.jukugo;
+    document.querySelector("#meaning").textContent = question.meaning;
+}
+displayQuiz(question);
 
-if (submit) {
+/**
+ * 正解したら次の問題を表示
+ */
+const submitAnswer = () => {
     submit.addEventListener('click', () => {
         const answer = document.querySelector("#answer").value;
-        // console.log(answer);
-        if (answer === obj.kana) {
+
+        if (answer === question.kana) {
             alert('正解！');
+            question = getQuestion();
+            displayQuiz(question);
+            submitAnswer();
         }
     })
 }
+submitAnswer();
 
-if (reveal) {
-    reveal.addEventListener('click', () => {
-        alert(obj.kana);
-    })
-}
+reveal.addEventListener('click', () => {
+    alert(question.kana);
+})
