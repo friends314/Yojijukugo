@@ -47,7 +47,7 @@ let question = getQuestion();
  * 問題を表示
  */
 const displayQuiz = question => {
-    // console.log(question);
+    console.log(question);
     jukugo.textContent = question.jukugo;
     meaning.textContent = question.meaning;
     answer.focus();
