@@ -82,10 +82,6 @@ const checkAnswer = () => {
 }
 checkAnswer();
 
-reveal.addEventListener('click', () => {
-    alert(question.kana);
-})
-
 /**
  * 現在何問目か＋進捗率を取得
  */
@@ -99,3 +95,28 @@ function getLocation(current, total) {
         return `現在【${current}/${total}】問目（進捗率${rate}%）`;
     }
 }
+
+/**
+ * 正解を見る
+ */
+const cheat = document.querySelectorAll('.cheat');
+
+cheat.forEach(item => {
+    const button = item.querySelector('#reveal');
+    const target = button.nextElementSibling;
+    target.textContent = question.meaning;
+
+    const targetH = target.offsetHeight;
+    target.style.height = 0;
+
+    button.addEventListener('click', e => {
+        button.classList.toggle('is-open');
+        target.classList.toggle('is-open');
+
+        if (target.classList.contains('is-open')) {
+            target.style.height = targetH + 'px';
+        } else {
+            target.style.height = 0;
+        }
+    })
+});

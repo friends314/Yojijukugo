@@ -40,3 +40,17 @@ input.deny {
   border-color: red;
   box-shadow: 0 0 0 0.2rem rgba(255, 0, 34, 0.2);
 }
+
+#reveal {
+  display: block;
+  margin: 0 auto;
+}
+
+.reveal-answer {
+  overflow: hidden;
+  transition: height .3s ease;
+}
+
+.reveal-answer-inner {
+  padding: 10px 0;
+}

@@ -5,8 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>お題①</title>
   <link rel="stylesheet" href="../css/style.css">
-  <script defer src="../js/data.js"></script>
-  <script defer src="../js/main.js"></script>
 </head>
 <body>
   <header>
@@ -23,8 +21,16 @@
     </section>
   </main>
   <div class="fl-center fl-column mt-60">
-    <button id="reveal" class="mb-20">答えを見る</button>
+    <div class="cheat">
+      <button id="reveal" class="mb-20">答えを見る</button>
+      <p class="reveal-answer">
+        <span class="reveal-answer-inner"></span>
+      </p>
+    </div>
+
     <a href="../index.html">タイトルに戻る</a>
   </div>
+  <script defer src="../js/data.js"></script>
+  <script defer src="../js/main.js"></script>
 </body>
 </html>
