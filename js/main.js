@@ -50,6 +50,7 @@ const displayQuiz = question => {
     console.log(question);
     jukugo.textContent = question.jukugo;
     meaning.textContent = question.meaning;
+    reveal.nextElementSibling.textContent = question.kana;
     answer.focus();
     const current_location = getLocation(current, total);
     loc.textContent = current_location;
@@ -71,6 +72,8 @@ const checkAnswer = () => {
                 if (question != false) {
                     displayQuiz(question);
                     checkAnswer();
+
+                    reveal.nextElementSibling.style.height = 0;
                 }
             } else if (e.target.value !== ''){
                 answer.classList.add('deny');
@@ -104,7 +107,7 @@ const cheat = document.querySelectorAll('.cheat');
 cheat.forEach(item => {
     const button = item.querySelector('#reveal');
     const target = button.nextElementSibling;
-    target.textContent = question.meaning;
+    target.textContent = question.kana;
 
     const targetH = target.offsetHeight;
     target.style.height = 0;

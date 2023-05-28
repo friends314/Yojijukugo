@@ -41,6 +41,16 @@ input.deny {
   box-shadow: 0 0 0 0.2rem rgba(255, 0, 34, 0.2);
 }
 
+h1 {
+  font-family: 'Rampart One', cursive;
+}
+
+.wrapper {
+  max-width: 720px;
+  padding: 0 20px;
+  margin: 0 auto;
+}
+
 #reveal {
   display: block;
   margin: 0 auto;
