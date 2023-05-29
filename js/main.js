@@ -123,3 +123,25 @@ cheat.forEach(item => {
         }
     })
 });
+
+/**
+ * 経過時間を表示
+ */
+let startTime = Date.now();
+
+const timeID = setInterval((tmp, total)=>{
+    const millis = Date.now() - startTime;
+    const minutes = Math.floor(millis / 1000 / 60);
+    const seconds = Math.floor((millis / 1000) % 60);
+
+    if(minutes > 0) {
+        document.querySelector('.time').textContent = minutes + '分' + seconds + '秒';
+    }else{
+        document.querySelector('.time').textContent = seconds + '秒';
+    }
+
+    console.log(seconds);
+    if (tmp.length == total) {
+        clearInterval(timeID);
+    }
+}, 1000);

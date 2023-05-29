@@ -64,3 +64,11 @@ h1 {
 .reveal-answer-inner {
   padding: 10px 0;
 }
+
+#timer {
+  text-align: center;
+}
+
+#timer span {
+  display: block;
+}
