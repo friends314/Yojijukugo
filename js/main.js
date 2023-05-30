@@ -38,7 +38,6 @@ const getQuestion = (d = dictionary) => {
     } while (tmp.includes(key));
 
     tmp.push(key);
-    // console.log(tmp);
     return d[key];
 }
 let question = getQuestion();
@@ -62,9 +61,7 @@ displayQuiz(question);
  */
 const checkAnswer = () => {
     answer.addEventListener('keydown', (e) => {
-        // console.log(e.keyCode);
         if (e.keyCode == 13 ) {
-            // console.log(e.target.value);
             if (e.target.value === question.kana) {
                 alert('正解！');
                 current += 1;
@@ -90,8 +87,6 @@ checkAnswer();
  */
 function getLocation(current, total) {
     rate = Math.floor((current - 1) / total * 100);
-    // console.log (current);
-    // console.log(total);
     if(current - 1 == total){
         return `全問終わり（進捗率${rate}%）`;
     }else {
