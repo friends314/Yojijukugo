@@ -1,4 +1,7 @@
 @charset 'utf-8';
+* {
+  box-sizing: border-box;
+}
 
 .al-center {
   text-align: center;
@@ -43,6 +46,48 @@ input.deny {
 
 h1 {
   font-family: 'Rampart One', cursive;
+}
+
+ul {
+  list-style-type: none;
+}
+
+#level {
+  margin-top: 50px;
+  padding: 0 120px;
+  justify-content: flex-start;
+}
+
+.lv-label,
+.lv-btn {
+  padding: 0;
+  margin: 0;
+  user-select: none;
+}
+
+.lv-btn {
+  display: block;
+  width: 0;
+  height: 0;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  -webkit-appearance: none;
+}
+
+.lv-label {
+    padding: 10px;
+    margin-right: 20px;
+    border: 1px solid #aaa;
+}
+
+.lv-label:hover {
+  background-color: #eee;
+  cursor: pointer;
+}
+
+.lv-btn:focus + .lv-label {
+  border: 2px solid #000;
 }
 
 .wrapper {

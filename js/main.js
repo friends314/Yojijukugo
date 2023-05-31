@@ -1,5 +1,14 @@
 'use strict';
 
+/**
+ * 辞書からパラメータのレベルに応じた問題を取得
+ */
+let params = new URLSearchParams(document.location.search.substring(1));
+let level = params.get('level');
+
+dictionary = dictionary.filter(item => item.level == level)[0].questions;
+// console.log(dictionary);
+
 const jukugo = document.querySelector("#jukugo");
 const answer = document.querySelector("#answer");
 const reveal = document.querySelector("#reveal");
@@ -15,7 +24,7 @@ let rate = 0; // 進捗率
  * 一度出題された四字熟語は除外し、取得し直す。
  * @meth Math.floor(Math.random() * (max - min) + min);
  */
-const tmp = []; // 除外用配列
+let tmp = []; // 除外用配列
 const getQuestion = (d = dictionary) => {
     // 入力フォームを初期化
     answer.value = '';
@@ -38,6 +47,7 @@ const getQuestion = (d = dictionary) => {
     } while (tmp.includes(key));
 
     tmp.push(key);
+    console.log(tmp);
     return d[key];
 }
 let question = getQuestion();
@@ -46,7 +56,6 @@ let question = getQuestion();
  * 問題を表示
  */
 const displayQuiz = question => {
-    console.log(question);
     jukugo.textContent = question.jukugo;
     meaning.textContent = question.meaning;
     reveal.nextElementSibling.textContent = question.kana;
@@ -124,7 +133,7 @@ cheat.forEach(item => {
  */
 let startTime = Date.now();
 
-const timeID = setInterval((tmp, total)=>{
+const timeID = setInterval(() =>{
     const millis = Date.now() - startTime;
     const minutes = Math.floor(millis / 1000 / 60);
     const seconds = Math.floor((millis / 1000) % 60);
@@ -135,8 +144,9 @@ const timeID = setInterval((tmp, total)=>{
         document.querySelector('.time').textContent = seconds + '秒';
     }
 
-    console.log(seconds);
-    if (tmp.length == total) {
+    // console.log(seconds);
+    console.log(tmp);
+    if (tmp && tmp.length == total) {
         clearInterval(timeID);
     }
 }, 1000);
