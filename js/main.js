@@ -17,6 +17,7 @@ const loc = document.querySelector("#location");
 const total = dictionary.length;  // 問題数
 let current = 1;                 // 現在何問目か
 let rate = 0; // 進捗率
+let complete = false;
 
 /**
  * 辞書から１つランダムに取得
@@ -37,6 +38,7 @@ const getQuestion = (d = dictionary) => {
         reveal.remove();  // 完了画面の作成を検討
         meaning.remove();
         answer.remove();
+        complete = true;
         return false;
     }
 
@@ -142,7 +144,7 @@ const timeID = setInterval(() =>{
         document.querySelector('.time').textContent = seconds + '秒';
     }
 
-    if (tmp && tmp.length == total) {
+    if (complete) {
         clearInterval(timeID);
     }
 }, 1000);
