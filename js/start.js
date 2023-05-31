@@ -7,10 +7,12 @@ const levels = document.querySelectorAll('.lv-btn');
 const startBtn = document.querySelector("#start-btn");
 const hrefDefault = document.querySelector("#start-btn").href;
 
-levels.forEach((level, index)=> {
+levels.forEach((item, index)=> {
 
-    level.addEventListener('click', e => {
-    const param = `?level=${index + 1}`;
+    item.addEventListener('click', e => {
+
+    const level = item.dataset.level;
+    const param = `?level=${level}`;
 
     startBtn.href = `${hrefDefault}${param}`;
         console.log(startBtn.href);
