@@ -15,6 +15,5 @@ levels.forEach((item, index)=> {
     const param = `?level=${level}`;
 
     startBtn.href = `${hrefDefault}${param}`;
-        console.log(startBtn.href);
     })
 });

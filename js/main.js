@@ -7,7 +7,6 @@ let params = new URLSearchParams(document.location.search.substring(1));
 let level = params.get('level');
 
 dictionary = dictionary.filter(item => item.level == level)[0].questions;
-// console.log(dictionary);
 
 const jukugo = document.querySelector("#jukugo");
 const answer = document.querySelector("#answer");
@@ -47,7 +46,6 @@ const getQuestion = (d = dictionary) => {
     } while (tmp.includes(key));
 
     tmp.push(key);
-    console.log(tmp);
     return d[key];
 }
 let question = getQuestion();
@@ -144,8 +142,6 @@ const timeID = setInterval(() =>{
         document.querySelector('.time').textContent = seconds + '秒';
     }
 
-    // console.log(seconds);
-    console.log(tmp);
     if (tmp && tmp.length == total) {
         clearInterval(timeID);
     }
