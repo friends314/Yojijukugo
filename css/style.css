@@ -73,6 +73,7 @@ ul {
   margin: 0;
   overflow: hidden;
   -webkit-appearance: none;
+  visibility: hidden;
 }
 
 .lv-label {
